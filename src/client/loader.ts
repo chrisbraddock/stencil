@@ -56,6 +56,13 @@ export function init(
     resourcesUrl = (y.join('/')) + (y.length ? '/' : '') + fsNamespace + '/';
   }
 
+  // discard duplicate component URLs (essentially defensive code)
+  // more info: https://github.com/ionic-team/stencil/issues/1113
+  // and possibly: https://github.com/ionic-team/stencil/issues/1030
+  if (!Array.isArray(App.resourcesUrls)) App.resourcesUrls = [];
+  if (App.resourcesUrls.indexOf(resourcesUrl) > -1) return;
+  App.resourcesUrls.push(resourcesUrl);
+
   // request the core this browser needs
   // test for native support of custom elements and fetch
   // if either of those are not supported, then use the core w/ polyfills

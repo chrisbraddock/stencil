@@ -28,6 +28,7 @@ export interface AppGlobal {
   ael?: (elm: Element|Document|Window, eventName: string, cb: d.EventListenerCallback, opts?: d.ListenOptions) => void;
   asyncQueue?: boolean;
   resourcesUrl?: string;
+  resourcesUrls?: Array<string>;
   componentOnReady?: (elm: d.HostElement, resolve: (elm: d.HostElement) => void) => boolean;
   Context?: any;
   loadBundle?: (bundleId: string, dependents: string[], importFn: CjsImporterFn) => void;
